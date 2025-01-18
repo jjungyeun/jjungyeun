@@ -18,6 +18,5 @@ export default defineConfig({
   build: {
     outDir: './docs',
   },
-  base: '/jjungyeun/',
   publicPath: '/jjungyeun/',
 })
