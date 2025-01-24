@@ -41,11 +41,8 @@ jobs:
           echo "VITE_BRIDE_MOTHER_PHONE=${BRIDE_MOTHER_PHONE}" >> .env
           npm run build
 
-      # 5. GitHub Pages로 배포 (브랜치 저장 없이 배포)
+      # 5. GitHub Pages로 직접 배포
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: actions/deploy-pages@v1
         with:
-          branch: gh-pages # GitHub Pages에서 사용할 브랜치 (저장 X)
-          folder: docs # 배포할 폴더 (빌드 결과물이 생성된 폴더)
-          token: ${{ secrets.GITHUB_TOKEN }} # GitHub Actions 제공 기본 토큰
-
+          folder: docs
