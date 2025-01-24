@@ -3,10 +3,14 @@
   <head>
     <meta http-equiv="refresh" content="0; url=/" />
     <script>
-      // JavaScript로 경로를 유지한 채 리디렉션
-      var pathname = window.location.pathname;
-      window.location.href = '/' + '#' + pathname;
-    </script>
+        // 현재 요청 경로를 가져와 클라이언트 사이드에서 처리
+        var path = window.location.pathname;
+        var search = window.location.search;
+        var hash = window.location.hash;
+      
+        // index.html로 이동하고, 요청 경로를 Vue Router에 전달
+        window.location.replace("/" + "#" + path + search + hash);
+      </script>
   </head>
   <body></body>
 </html>
