@@ -43,7 +43,11 @@ jobs:
           npm run build
 
       # 5. GitHub Pages로 직접 배포
+      - name: Upload artifact to Pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: docs # 빌드 결과물이 저장된 폴더
+
+      # 6. Pages 배포 트리거
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v1
-        with:
-          folder: docs
