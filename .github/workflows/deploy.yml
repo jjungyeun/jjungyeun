@@ -4,7 +4,8 @@ on:
   workflow_dispatch: # 버튼 클릭으로 워크플로우 트리거
 
 permissions:
-  contents: write # GitHub Pages 배포를 위한 쓰기 권한 설정
+  pages: write # GitHub Pages 배포를 위한 권한
+  id-token: write # GitHub OIDC 토큰 발급
 
 jobs:
   deploy:
