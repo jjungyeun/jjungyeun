@@ -71,25 +71,7 @@ html, body {
 }
 
 .mobile-view::-webkit-scrollbar {
-  width: 8px; /* 스크롤바 너비 */
   display: none;
-}
-
-.mobile-view:hover::-webkit-scrollbar {
-  display: block; /* 호버하거나 스크롤 중일 때 표시 */
-}
-
-.mobile-view::-webkit-scrollbar-thumb {
-  background-color: #ccc; /* 스크롤바 색상 */
-  border-radius: 4px; /* 둥근 모서리 */
-}
-
-.mobile-view::-webkit-scrollbar-thumb:hover {
-  background-color: #aaa; /* 마우스 올렸을 때 색상 */
-}
-
-.mobile-view::-webkit-scrollbar-track {
-  background-color: #f0f0f0; /* 스크롤바 배경색 */
 }
 
 
