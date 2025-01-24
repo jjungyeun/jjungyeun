@@ -1,9 +1,56 @@
+:root {
+  --primary-color-purple: #B89EC6;
+  --background-yellow: #FFFEF9;
+  --background-light-purple: #F2F0F3;
+  --text-color-light-gray: #707070;
+  --text-color-dark-gray: #333333;
+  --text-color-point-navy: #2C3E50;
+  --text-color-point-gold: #D4AF37;
+}
+
+/* 폰트 불러오기 */
+@font-face {
+  font-family: 'Cafe24Shiningstar';
+  src: url('@/assets/fonts/Cafe24ShiningstarSubset.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ChosunNm';
+  src: url('@/assets/fonts/ChosunNmSubset.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GangwonEduAllB';
+  src: url('@/assets/fonts/GangwonEduAllSubsetB.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GangwonEduAllL';
+  src: url('@/assets/fonts/GangwonEduAllSubsetL.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NanumSquareRoundR';
+  src: url('@/assets/fonts/NanumSquareRoundR.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html, body {
   height: 100vh;
   width: 100vw;
   margin: 0;
-  background-color: #B89EC6;
+  background-color: var(--primary-color-purple);
   overflow: hidden;
+  font-family: 'NanumSquareRoundR', sans-serif;
 }
 
 .container {
@@ -20,7 +67,7 @@ html, body {
 
   padding: 10px;
 
-  background-color: #FFFEF9;
+  background-color: var(--background-yellow);
   overflow-y: auto; /* 세로 스크롤 활성화 */
   overflow-x: hidden; /* 가로 스크롤 방지 */
 }
@@ -58,4 +105,12 @@ html, body {
     border: 1px solid #ccc;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 100px;
 }
