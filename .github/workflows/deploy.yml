@@ -1,7 +1,10 @@
 name: Deploy to GitHub Pages
 
 on:
-  workflow_dispatch: # 버튼 클릭으로 워크플로우 트리거
+  # workflow_dispatch: # 버튼 클릭으로 워크플로우 트리거
+  push:
+    branches:
+      - master # master 브랜치 업데이트 시 트리거
 
 permissions:
   pages: write # GitHub Pages 배포를 위한 권한
