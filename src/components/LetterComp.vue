@@ -46,7 +46,7 @@
 import { GuestType } from '@/constants';
 
 export default {
-  name: "TitleComponent",
+  name: "LetterComponent",
   data() {
     return {
         guest_type: GuestType.FAMILY,
