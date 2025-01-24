@@ -42,6 +42,10 @@ export default {
 </script>
 
 <style scoped>
+.contents {
+  margin-top: 100px;
+}
+
 /* 제목 스타일 */ 
 .title {
   font-size: 45px;
