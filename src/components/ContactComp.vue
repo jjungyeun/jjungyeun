@@ -253,8 +253,8 @@ export default {
   background-color: var(--primary-color-purple);
   border-radius: 10px;
   padding: 20px;
-  width: 90%;
-  max-width: 400px;
+  width: 80%;
+  max-width: 350px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;

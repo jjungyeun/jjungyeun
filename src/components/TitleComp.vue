@@ -52,6 +52,7 @@ export default {
   font-weight: lighter;
   font-style: italic;
   color: var(--primary-color-purple);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   font-family: 'Cafe24Shiningstar', sans-serif;
 }
 
