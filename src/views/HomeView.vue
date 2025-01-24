@@ -1,8 +1,16 @@
-<script setup>
-</script>
-
 <template>
   <main>
-    <h3>This is HomeView</h3>
+    <TitleComp />
   </main>
 </template>
+
+<script>
+import TitleComp from "@/components/TitleComp.vue";
+
+export default {
+  name: "HomeView",
+  components: {
+    TitleComp,
+  },
+};
+</script>
