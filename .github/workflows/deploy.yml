@@ -37,12 +37,14 @@ jobs:
           BRIDE_PHONE: ${{ secrets.BRIDE_PHONE }}
           BRIDE_FATHER_PHONE: ${{ secrets.BRIDE_FATHER_PHONE }}
           BRIDE_MOTHER_PHONE: ${{ secrets.BRIDE_MOTHER_PHONE }}
+          NAVER_MAP_CLIENT_ID: ${{ secrets.NAVER_MAP_CLIENT_ID }}
         run: |
           echo "VITE_GROOM_PHONE=${GROOM_PHONE}" >> .env
           echo "VITE_GROOM_FATHER_PHONE=${GROOM_FATHER_PHONE}" >> .env
           echo "VITE_BRIDE_PHONE=${BRIDE_PHONE}" >> .env
           echo "VITE_BRIDE_FATHER_PHONE=${BRIDE_FATHER_PHONE}" >> .env
           echo "VITE_BRIDE_MOTHER_PHONE=${BRIDE_MOTHER_PHONE}" >> .env
+          echo "VITE_NAVER_MAP_CLIENT_ID=${NAVER_MAP_CLIENT_ID}" >> .env
           npm run build
 
       # 5. GitHub Pages로 직접 배포
