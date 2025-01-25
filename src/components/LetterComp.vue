@@ -47,10 +47,14 @@ import { GuestType } from '@/constants';
 
 export default {
   name: "LetterComponent",
-  data() {
-    return {
-        guest_type: GuestType.FAMILY,
-    }
+  props: {
+    guest_type: {
+      type: String,
+      required: true,
+      validator(value) {
+        return Object.values(GuestType).includes(value);
+      }
+    },
   },
   computed: {
     GuestType() {

@@ -11,8 +11,8 @@
         <!-- 하단 텍스트 -->
         <div class="details">
             <div class="couple-name">신랑 김영진 ♥ 신부 원정연</div>
-            <div class="date-time" v-if="guest_type === GuestType.FAMILY">
-                {{ format(family_status.date, "yyyy. M. dd EEE HH:mm") }}
+            <div class="date-time" v-if="guest_type === GuestType.FAMILY && family_status != FamilyStatus.DEFAULT">
+                {{ format(family_status.date, "yyyy. MM. dd EEE HH:mm") }}
             </div>
         </div>
     </div>
@@ -24,15 +24,26 @@ import { format } from "date-fns";
 
 export default {
   name: "TitleComponent",
-  data() {
-    return {
-        guest_type: GuestType.FAMILY,
-        family_status: FamilyStatus.JY_DAD,
+  props: {
+    guest_type: {
+      type: String,
+      required: true,
+      validator(value) {
+        return Object.values(GuestType).includes(value);
+      }
+    },
+    family_status: {
+      type: Object,
+      required: false,
+      default: FamilyStatus.JY_DAD,
     }
   },
   computed: {
     GuestType() {
       return GuestType;
+    },
+    FamilyStatus() {
+      return FamilyStatus;
     },
     format() {
       return format;

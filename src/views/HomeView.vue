@@ -1,7 +1,7 @@
 <template>
   <main>
-    <TitleComp />
-    <LetterComp />
+    <TitleComp :guest_type="guest_type" />
+    <LetterComp :guest_type="guest_type" />
     <ContactComp />
   </main>
 </template>
@@ -11,6 +11,8 @@ import TitleComp from "@/components/TitleComp.vue";
 import LetterComp from "@/components/LetterComp.vue";
 import ContactComp from "@/components/ContactComp.vue";
 
+import { GuestType } from '@/constants';
+
 export default {
   name: "HomeView",
   components: {
@@ -18,5 +20,10 @@ export default {
     LetterComp,
     ContactComp,
   },
+  data() {
+    return {
+      guest_type: GuestType.GUEST,
+    }
+  }
 };
 </script>

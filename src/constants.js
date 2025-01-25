@@ -14,5 +14,8 @@ export const FamilyStatus = {
     },
     JY_MOM: {
         date: new Date(2025, 4-1, 13, 12, 0, 0)
+    },
+    DEFAULT: {
+        date: new Date()
     }
 }

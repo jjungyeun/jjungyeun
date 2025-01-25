@@ -1,15 +1,35 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <main>
+    <TitleComp :guest_type="guest_type" :family_status="family_status" />
+    <LetterComp :guest_type="guest_type" />
+    <ContactComp />
+  </main>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
+<script>
+import TitleComp from "@/components/TitleComp.vue";
+import LetterComp from "@/components/LetterComp.vue";
+import ContactComp from "@/components/ContactComp.vue";
+
+import { GuestType, FamilyStatus } from '@/constants';
+
+export default {
+  name: "FamilyView",
+  components: {
+    TitleComp,
+    LetterComp,
+    ContactComp,
+  },
+  data() {
+    return {
+      guest_type: GuestType.FAMILY,
+    }
+  },
+  computed: {
+    family_status() {
+      const statusKey = this.$route.query.status;
+      return FamilyStatus[statusKey] || FamilyStatus.DEFAULT;
+    }
+  },
+};
+</script>
