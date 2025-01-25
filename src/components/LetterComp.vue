@@ -67,7 +67,7 @@ export default {
 <style scoped>
 .contents {
   margin-top: 400px;
-  margin-bottom: 400px;
+  margin-bottom: 500px;
 }
 
 .ribbon {

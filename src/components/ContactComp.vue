@@ -130,8 +130,7 @@ export default {
 
 <style scoped>
 .contents {
-  margin-top: 400px;
-  height: 800px;
+  height: 1000px;
   background-color: var(--background-light-purple);
 }
 

@@ -12,7 +12,7 @@
         <div class="details">
             <div class="couple-name">신랑 김영진 ♥ 신부 원정연</div>
             <div class="date-time" v-if="guest_type === GuestType.FAMILY && family_status != FamilyStatus.DEFAULT">
-                {{ format(family_status.date, "yyyy. MM. dd EEE HH:mm") }}
+                {{ format(family_status.date, "yyyy. M. d EEE HH:mm") }}
             </div>
         </div>
     </div>
