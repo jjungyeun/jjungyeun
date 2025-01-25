@@ -142,7 +142,7 @@
     margin-top: 70px;
   }
   .venue-name {
-    font-size: 23px;
+    font-size: 20px;
     font-weight: bold;
     color: var(--text-color-point-gold);
   }
@@ -160,11 +160,11 @@
     text-decoration: none;
   }
   .map {
-    width: 100%;
+    width: 90%;
     height: 300px; /* 지도 높이 설정 */
-    margin: 40px 0;
+    margin: 40px auto;
     border-radius: 10px;
-    border: 5px solid var(--primary-color-purple);
+    border: 1px solid var(--primary-color-purple);
     overflow: hidden;
   }
   .transport {
