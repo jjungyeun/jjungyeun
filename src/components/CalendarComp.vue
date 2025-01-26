@@ -40,9 +40,7 @@
             </div>
         
             <!-- 하단 메시지 -->
-            <p class="footer-text">
-                영진 & 정연 결혼이 {{ daysUntilWedding }}일 남았습니다
-            </p>
+            <p class="footer-text">{{ daysUntilWedding }}</p>
         </div>
     </div>
 </template>
@@ -84,9 +82,23 @@
         return this.weddingDate.getDate();
         },
         daysUntilWedding() {
-            const now = new Date();
-            const diff = this.weddingDate - now;
-            return Math.floor(diff / (1000 * 60 * 60 * 24)); // 남은 일수 계산
+          // 오늘 날짜와 결혼 날짜를 "날짜만" 비교
+          const nowDate = new Date();
+          const today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate()); // 오늘 날짜만
+          const wedding = new Date(this.weddingDate.getFullYear(), this.weddingDate.getMonth(), this.weddingDate.getDate()); // 결혼 날짜만
+
+          const diff = wedding - today; // 밀리초 단위 차이
+          const remainDate = Math.floor(diff / (1000 * 60 * 60 * 24)); // 남은 일수 계산
+
+          console.log(diff, remainDate); // 디버깅용
+
+          if (remainDate > 0) {
+            return `영진 & 정연 결혼이 ${remainDate}일 남았습니다`;
+          } else if (remainDate === 0) {
+            return "영진 & 정연 결혼의 날입니다";
+          } else {
+            return `영진 & 정연 결혼이 ${-remainDate}일 지났습니다`;
+          }
         },
         formattedWeddingDate() {
             // 시간 확인: 오전 12시 정각이면 시간 아예 생략
@@ -139,14 +151,20 @@
         updateCountdown() {
             const now = new Date();
             const diff = this.weddingDate - now;
-    
+
             if (diff > 0) {
-                this.remainingTime.days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                this.remainingTime.hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                this.remainingTime.minutes = Math.floor((diff / (1000 * 60)) % 60);
-                this.remainingTime.seconds = Math.floor((diff / 1000) % 60);
+              // 날짜가 남아 있을 경우, 남은 시간 계산
+              this.remainingTime.days = Math.floor(diff / (1000 * 60 * 60 * 24));
+              this.remainingTime.hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+              this.remainingTime.minutes = Math.floor((diff / (1000 * 60)) % 60);
+              this.remainingTime.seconds = Math.floor((diff / 1000) % 60);
             } else {
-                this.remainingTime = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+              // 날짜가 지났을 경우, 경과 시간 계산
+              const elapsed = Math.abs(diff); // 절대값으로 경과 시간 계산
+              this.remainingTime.days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+              this.remainingTime.hours = Math.floor((elapsed / (1000 * 60 * 60)) % 24);
+              this.remainingTime.minutes = Math.floor((elapsed / (1000 * 60)) % 60);
+              this.remainingTime.seconds = Math.floor((elapsed / 1000) % 60);
             }
         },
     },
