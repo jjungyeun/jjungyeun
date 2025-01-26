@@ -32,12 +32,17 @@ jobs:
       # 4. 빌드 실행 (빌드 결과물 생성)
       - name: Build project
         env:
-          GROOM_PHONE: ${{ secrets.GROOM_PHONE }}
-          GROOM_FATHER_PHONE: ${{ secrets.GROOM_FATHER_PHONE }}
-          BRIDE_PHONE: ${{ secrets.BRIDE_PHONE }}
-          BRIDE_FATHER_PHONE: ${{ secrets.BRIDE_FATHER_PHONE }}
-          BRIDE_MOTHER_PHONE: ${{ secrets.BRIDE_MOTHER_PHONE }}
-          NAVER_MAP_CLIENT_ID: ${{ secrets.NAVER_MAP_CLIENT_ID }}
+          GROOM_PHONE: ${{ vars.GROOM_PHONE }}
+          GROOM_FATHER_PHONE: ${{ vars.GROOM_FATHER_PHONE }}
+          BRIDE_PHONE: ${{ vars.BRIDE_PHONE }}
+          BRIDE_FATHER_PHONE: ${{ vars.BRIDE_FATHER_PHONE }}
+          BRIDE_MOTHER_PHONE: ${{ vars.BRIDE_MOTHER_PHONE }}
+          NAVER_MAP_CLIENT_ID: ${{ vars.NAVER_MAP_CLIENT_ID }}
+          GROOM_ACCOUNT: ${{ vars.GROOM_ACCOUNT }}
+          GROOM_FATHER_ACCOUNT: ${{ vars.GROOM_FATHER_ACCOUNT }}
+          BRIDE_ACCOUNT: ${{ vars.BRIDE_ACCOUNT }}
+          BRIDE_FATHER_ACCOUNT: ${{ vars.BRIDE_FATHER_ACCOUNT }}
+          BRIDE_MOTHER_ACCOUNT: ${{ vars.BRIDE_MOTHER_ACCOUNT }}
         run: |
           echo "VITE_GROOM_PHONE=${GROOM_PHONE}" >> .env
           echo "VITE_GROOM_FATHER_PHONE=${GROOM_FATHER_PHONE}" >> .env
@@ -45,6 +50,11 @@ jobs:
           echo "VITE_BRIDE_FATHER_PHONE=${BRIDE_FATHER_PHONE}" >> .env
           echo "VITE_BRIDE_MOTHER_PHONE=${BRIDE_MOTHER_PHONE}" >> .env
           echo "VITE_NAVER_MAP_CLIENT_ID=${NAVER_MAP_CLIENT_ID}" >> .env
+          echo "VITE_GROOM_ACCOUNT=${GROOM_ACCOUNT}" >> .env
+          echo "VITE_GROOM_FATHER_ACCOUNT=${GROOM_FATHER_ACCOUNT}" >> .env
+          echo "VITE_BRIDE_ACCOUNT=${BRIDE_ACCOUNT}" >> .env
+          echo "VITE_BRIDE_FATHER_ACCOUNT=${BRIDE_FATHER_ACCOUNT}" >> .env
+          echo "VITE_BRIDE_MOTHER_ACCOUNT=${BRIDE_MOTHER_ACCOUNT}" >> .env
           npm run build
 
       # 5. GitHub Pages로 직접 배포

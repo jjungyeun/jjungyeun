@@ -8,12 +8,19 @@
         <div class="venue">
             <div class="venue-name">
             파티앤프렌즈 (파블로홀)
-            <a href="https://naver.me/FqWaF61s" target="_blank">
-              <img src="@/assets/images/link.png" alt="링크 아이콘" class="icon" />
-            </a>
-        </div>
+            </div>
+            <div class="venue-name-icon">
+              <a href="tel:02-2232-6000" target="_blank">
+                <img src="@/assets/images/phone-gray.png" alt="전화 아이콘" />
+                전화하기
+              </a>
+              <a href="https://naver.me/FqWaF61s" target="_blank">
+                <img src="@/assets/images/link.png" alt="링크 아이콘" />
+                네이버지도
+              </a>
+            </div>
             <div class="venue-address">
-            서울 중구 다산로46길 17
+            주소: 서울 중구 다산로46길 17
             <img src="@/assets/images/copy.png" 
               @click="copyToClipboard('서울 중구 다산로46길 17')" class="icon" />
               <br/><span>(청계천 두산위브더제니스 B1)</span>
@@ -150,24 +157,39 @@
     font-size: 23px;
     font-weight: bold;
     color: var(--text-color-point-gold);
-    .icon {
+  }
+  .venue-name-icon {
+    margin-top: 10px;
+    font-size: 16px;
+    a {
       cursor: pointer;
-      height: 23px;
+      text-decoration: none;
+      color: var(--text-color-light-gray);
+      display: inline-flex; /* 아이콘과 텍스트를 수평 정렬 */
+      align-items: center; /* 텍스트와 아이콘 높이 맞춤 */
+      gap: 2px; /* 아이콘과 텍스트 사이 간격 */
+      margin-right: 10px; /* 링크 간 간격 */
+    }
+    img {
+      height: 16px;
+      vertical-align: middle; /* 이미지의 수직 정렬 */
     }
   }
   .venue-address {
     margin-top: 20px;
-    font-size: 17px;
-    color: var(--text-color-light-gray);
+    font-size: 16px;
+    color: var(--text-color-dark-gray);
     line-height: 1.5;
     
     .icon {
       cursor: pointer;
-      height: 18px;
+      height: 17px;
+      vertical-align: middle; /* 이미지의 수직 정렬 */
     }
 
     span {
       font-size: 14px;
+      color: var(--text-color-light-gray);
     }
   }
   .map {
