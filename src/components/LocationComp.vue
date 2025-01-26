@@ -7,22 +7,21 @@
         <!-- 장소 정보 -->
         <div class="venue">
             <div class="venue-name">
-            파티앤프렌즈 파블로홀
-            <a href="https://naver.me/FqWaF61s" target="_blank" class="icon">
-                🔗
+            파티앤프렌즈 (파블로홀)
+            <a href="https://naver.me/FqWaF61s" target="_blank">
+              <img src="@/assets/images/link.png" alt="링크 아이콘" class="icon" />
             </a>
         </div>
             <div class="venue-address">
-            서울 중구 다산로46길 17<br />
-            청계천 두산위브더제니스 B1
-            <button @click="copyToClipboard('서울 중구 다산로46길 17 청계천 두산위브더제니스')" class="icon">
-                📋
-            </button>
-        </div>
+            서울 중구 다산로46길 17
+            <img src="@/assets/images/copy.png" 
+              @click="copyToClipboard('서울 중구 다산로46길 17')" class="icon" />
+              <br/><span>(청계천 두산위브더제니스 B1)</span>
+            </div>
         </div>
     
         <!-- 지도 -->
-        <div id="map" class="map"></div>
+        <div id="map" class="map" href="https://naver.me/FqWaF61s"></div>
     
         <!-- 교통 정보 -->
         <div class="transport">
@@ -83,6 +82,11 @@
       const map = new naver.maps.Map("map", {
         center: new naver.maps.LatLng(lat, lon), // 파티앤프렌즈 좌표
         zoom: 16,
+        disableKineticPan: true, // 관성 이동 비활성화
+        draggable: false, // 드래그 비활성화
+        scrollWheel: false, // 스크롤 줌 비활성화
+        pinchZoom: false, // 터치 줌 비활성화
+        keyboardShortcuts: false, // 키보드 단축키 비활성화
       });
 
       // 마커 추가
@@ -96,7 +100,7 @@
       const infoWindow = new naver.maps.InfoWindow({
         content: `
           <div style="padding:7px; font-size:15px; font-weight:bold; ">
-            <a href="https://naver.me/FqWaF61s" target="_blank" style="text-decoration:none;">
+            <a href="https://map.naver.com/p/directions/-/14139546.5428928,4518431.3936094,%ED%8C%8C%ED%8B%B0%EC%95%A4%ED%94%84%EB%A0%8C%EC%A6%88,1158074577,PLACE_POI/-/transit?c=15.00,0,0,0,dh" target="_blank" style="text-decoration:none;">
               파티앤프렌즈
             </a>
           </div>
@@ -124,6 +128,7 @@
   <style scoped>
   .contents {
     height: 1500px;
+    background-color: var(--background-light-purple);
   }
   .location {
     margin: auto 0px;
@@ -142,22 +147,28 @@
     margin-top: 70px;
   }
   .venue-name {
-    font-size: 20px;
+    font-size: 23px;
     font-weight: bold;
     color: var(--text-color-point-gold);
+    .icon {
+      cursor: pointer;
+      height: 23px;
+    }
   }
   .venue-address {
     margin-top: 20px;
-    font-size: 15px;
+    font-size: 17px;
     color: var(--text-color-light-gray);
-  }
-  .icon {
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    color: inherit;
-    text-decoration: none;
+    line-height: 1.5;
+    
+    .icon {
+      cursor: pointer;
+      height: 18px;
+    }
+
+    span {
+      font-size: 14px;
+    }
   }
   .map {
     width: 90%;

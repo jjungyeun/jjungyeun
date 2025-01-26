@@ -1,7 +1,7 @@
 <template>
     <div class="contents">
         <!-- 상단 제목 -->
-        <div class="title">The Start of Our Forever</div>
+        <div class="title">우리 결혼합니다</div>
 
         <!-- 사진 영역 -->
         <div class="photo-frame">
