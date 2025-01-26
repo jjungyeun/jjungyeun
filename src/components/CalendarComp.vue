@@ -54,9 +54,9 @@
   export default {
     name: "CalendarComponent",
     props: {
-        family_status: {
-        type: Object,
-        required: true,
+        guest_status: {
+          type: Object,
+          required: true,
         }
     },
     data() {
@@ -78,7 +78,7 @@
     },
     computed: {
         weddingDate() {
-            return this.family_status.date; // 생략: weddingDate 계산
+            return this.guest_status.date;
         },
         weddingDay() {
         return this.weddingDate.getDate();
@@ -89,16 +89,33 @@
             return Math.floor(diff / (1000 * 60 * 60 * 24)); // 남은 일수 계산
         },
         formattedWeddingDate() {
+            // 시간 확인: 오전 12시 정각이면 시간 아예 생략
             // 분 값 확인: 0이면 분 생략, 그렇지 않으면 분 포함
-            const minutes = this.family_status.date.getMinutes();
-            const timeFormat = minutes === 0 ? "a h시" : "a h시 m분";
+            const hours = this.weddingDate.getHours();
+            const minutes = this.weddingDate.getMinutes();
 
-            return format(this.family_status.date, `yyyy년 M월 d일 EEEE ${timeFormat}`, {
-                locale: ko, // 한글 로케일 적용
-            });
+            // 오전 12시 정각 처리
+            if (hours === 0 && minutes === 0) {
+              return format(this.weddingDate, "yyyy년 M월 d일 EEEE", { locale: ko });
+            }
+
+            // 일반 시간 출력
+            if (minutes === 0) {
+              return format(this.weddingDate, "yyyy년 M월 d일 EEEE a h시", { locale: ko });
+            } else {
+              return format(this.weddingDate, "yyyy년 M월 d일 EEEE a h시 m분", { locale: ko });
+            }
         },
         formattedSubWeddingDate() {
-        return format(this.weddingDate, "EEEE, MMMM d, yyyy  h:mm a");
+          const hours = this.weddingDate.getHours();
+          const minutes = this.weddingDate.getMinutes();
+
+          // 오전 12시 정각 처리
+          if (hours === 0 && minutes === 0) {
+            return format(this.weddingDate, "EEEE, MMMM d, yyyy");
+          } else {
+            return format(this.weddingDate, "EEEE, MMMM d, yyyy  h:mm a");
+          }
         },
         daysOfWeek() {
             return ["일", "월", "화", "수", "목", "금", "토"];

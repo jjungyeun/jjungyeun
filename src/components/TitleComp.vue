@@ -11,15 +11,15 @@
         <!-- 하단 텍스트 -->
         <div class="details">
             <div class="couple-name">신랑 김영진 ♥ 신부 원정연</div>
-            <div class="date-time" v-if="guest_type === GuestType.FAMILY && family_status != FamilyStatus.DEFAULT">
-                {{ format(family_status.date, "yyyy. M. d EEE HH:mm") }}
+            <div class="date-time">
+                {{ formattedWeddingDate }}
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import { GuestType, FamilyStatus } from '@/constants';
+import { GuestType, GuestStatus } from '@/constants';
 import { format } from "date-fns";
 
 export default {
@@ -32,21 +32,33 @@ export default {
         return Object.values(GuestType).includes(value);
       }
     },
-    family_status: {
+    guest_status: {
       type: Object,
       required: false,
-      default: FamilyStatus.JY_DAD,
+      default: GuestStatus.JY_DAD,
     }
   },
   computed: {
     GuestType() {
       return GuestType;
     },
-    FamilyStatus() {
-      return FamilyStatus;
+    GuestStatus() {
+      return GuestStatus;
     },
-    format() {
-      return format;
+    weddingDate() {
+        return this.guest_status.date;
+    },
+    formattedWeddingDate() {
+        // 시간 확인: 오전 12시 정각이면 시간 아예 생략
+        const hours = this.weddingDate.getHours();
+        const minutes = this.weddingDate.getMinutes();
+
+        // 오전 12시 정각 처리
+        if (hours === 0 && minutes === 0) {
+          return format(this.weddingDate, "yyyy. M. d. EEEE");
+        } else {
+          return format(this.weddingDate, "yyyy. M. d EEE HH:mm");
+        }
     },
   },
 };

@@ -1,10 +1,10 @@
 <template>
   <main>
-    <TitleComp :guest_type="guest_type" :family_status="family_status" />
+    <TitleComp :guest_type="guest_type" :guest_status="guest_status" />
     <LetterComp :guest_type="guest_type" />
     <ContactComp />
-    <CalendarComp v-if="family_status!=FamilyStatus.DEFAULT" :family_status="family_status" />
-    <LocationComp v-if="family_status==FamilyStatus.JY_DAD || family_status==FamilyStatus.YJ_MOM" />
+    <CalendarComp :guest_status="guest_status" />
+    <LocationComp v-if="guest_status==GuestStatus.JY_DAD || guest_status==GuestStatus.YJ_MOM" />
     <AccountComp />
   </main>
 </template>
@@ -17,7 +17,7 @@ import CalendarComp from "@/components/CalendarComp.vue";
 import LocationComp from "@/components/LocationComp.vue";
 import AccountComp from "@/components/AccountComp.vue";
 
-import { GuestType, FamilyStatus } from '@/constants';
+import { GuestType, GuestStatus } from '@/constants';
 
 export default {
   name: "FamilyView",
@@ -35,12 +35,12 @@ export default {
     }
   },
   computed: {
-    family_status() {
+    guest_status() {
       const statusKey = this.$route.query.status;
-      return FamilyStatus[statusKey] || FamilyStatus.DEFAULT;
+      return GuestStatus[statusKey] || GuestStatus.DEFAULT;
     },
-    FamilyStatus() {
-      return FamilyStatus;
+    GuestStatus() {
+      return GuestStatus;
     },
   },
 };
