@@ -90,8 +90,6 @@
           const diff = wedding - today; // 밀리초 단위 차이
           const remainDate = Math.floor(diff / (1000 * 60 * 60 * 24)); // 남은 일수 계산
 
-          console.log(diff, remainDate); // 디버깅용
-
           if (remainDate > 0) {
             return `영진 & 정연 결혼이 ${remainDate}일 남았습니다`;
           } else if (remainDate === 0) {

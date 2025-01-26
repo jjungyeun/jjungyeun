@@ -105,8 +105,9 @@
   
 <style scoped>
 .contents {
-  margin-top: 300px;
-  margin-bottom: 300px;
+  padding-top: 300px;
+  padding-bottom: 300px;
+  background-color: var(--background-light-gray);
 }
 .account-comp {
   width: 85%;

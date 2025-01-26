@@ -4,6 +4,7 @@
     <LetterComp :guest_type="guest_type" />
     <ContactComp />
     <CalendarComp :guest_status="guest_status" />
+    <GalleryComp />
     <AccountComp v-if="account_status" />
 
   </main>
@@ -14,6 +15,7 @@ import TitleComp from "@/components/TitleComp.vue";
 import LetterComp from "@/components/LetterComp.vue";
 import ContactComp from "@/components/ContactComp.vue";
 import CalendarComp from "@/components/CalendarComp.vue";
+import GalleryComp from "@/components/GalleryComp.vue";
 import AccountComp from "@/components/AccountComp.vue";
 
 import { GuestType, GuestStatus } from '@/constants';
@@ -25,6 +27,7 @@ export default {
     LetterComp,
     ContactComp,
     CalendarComp,
+    GalleryComp,
     AccountComp,
   },
   data() {
