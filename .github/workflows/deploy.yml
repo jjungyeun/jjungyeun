@@ -37,7 +37,7 @@ jobs:
           BRIDE_PHONE: ${{ vars.BRIDE_PHONE }}
           BRIDE_FATHER_PHONE: ${{ vars.BRIDE_FATHER_PHONE }}
           BRIDE_MOTHER_PHONE: ${{ vars.BRIDE_MOTHER_PHONE }}
-          NAVER_MAP_CLIENT_ID: ${{ vars.NAVER_MAP_CLIENT_ID }}
+          NAVER_MAP_CLIENT_ID: ${{ secrets.NAVER_MAP_CLIENT_ID }}
           GROOM_ACCOUNT: ${{ vars.GROOM_ACCOUNT }}
           GROOM_FATHER_ACCOUNT: ${{ vars.GROOM_FATHER_ACCOUNT }}
           BRIDE_ACCOUNT: ${{ vars.BRIDE_ACCOUNT }}
