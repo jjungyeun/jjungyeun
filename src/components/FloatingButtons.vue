@@ -90,7 +90,14 @@ export default {
       },
       copyLink() {
         const currentUrl = window.location.href; // 현재 페이지의 전체 URL 가져오기
-        navigator.clipboard.writeText(currentUrl).then(() => {
+        var shareMessage = "[신랑 김영진 ♥ 신부 원정연]\n결혼을 축하해주세요😊";
+        shareMessage += "\n---------------";
+        shareMessage += `\n${this.getShareMessage()}`;
+        shareMessage += "\n---------------";
+        shareMessage += "\n↓↓ 청첩장 보러가기 ↓↓"
+        shareMessage += `\n${currentUrl}`;
+
+        navigator.clipboard.writeText(shareMessage).then(() => {
           this.toastMessage = "청첩장 링크가 복사되었습니다😊";
           this.showToast = true;
         }).catch(err => {
