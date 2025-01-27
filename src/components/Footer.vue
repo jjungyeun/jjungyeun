@@ -41,7 +41,6 @@ export default {
     text-align: left;
     color: var(--text-color-light-gray);
     font-family: 'GangwonEduAllL', sans-serif;
-    font-size: 18px;
     line-height: 0.6;
 }
 .message {

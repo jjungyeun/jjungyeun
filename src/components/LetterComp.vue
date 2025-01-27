@@ -78,14 +78,17 @@ export default {
   margin-top: 70px;
   margin-bottom: 70px;
 
-  font-size: 20px;
-  font-weight: lighter;
-  color: var(--text-color-dark-gray);
-  font-family: 'GangwonEduAllL', sans-serif;
+  div {
+    font-size: 20px;
+    font-weight: lighter;
+    color: var(--text-color-dark-gray);
+    font-family: 'GangwonEduAllL', sans-serif;
+  }
 
   span {
     font-family: 'GangwonEduAllB', 'GangwonEduAllL', sans-serif;
     color: var(--text-color-point-navy);
+    font-size: 21px;
   }
 }
 </style>

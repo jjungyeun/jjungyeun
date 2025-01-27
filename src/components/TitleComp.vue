@@ -99,7 +99,6 @@ export default {
 /* 하단 텍스트 영역 */
 .details {
   margin-top: 40px;
-  font-size: 16px;
 }
 
 /* 커플 이름 */
