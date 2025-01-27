@@ -8,6 +8,7 @@
     <AccountComp v-if="account_status" />
     <Footer />
     <FloatingButtons :guest_status="guest_status" />
+    <BgmComp />
   </main>
 </template>
 
@@ -20,6 +21,7 @@ import GalleryComp from "@/components/GalleryComp.vue";
 import AccountComp from "@/components/AccountComp.vue";
 import Footer from "@/components/Footer.vue"
 import FloatingButtons from "@/components/FloatingButtons.vue"
+import BgmComp from "@/components/BgmComp.vue";
 
 import { GuestType, GuestStatus } from '@/constants';
 
@@ -34,6 +36,7 @@ export default {
     AccountComp,
     Footer,
     FloatingButtons,
+    BgmComp,
   },
   data() {
     return {
