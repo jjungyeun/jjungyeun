@@ -57,6 +57,7 @@ html, body {
   background-color: var(--background-yellow);
   overflow: hidden;
   font-family: 'NanumSquareRoundR', sans-serif;
+  -webkit-text-size-adjust: 100%;
 }
 
 .container {
