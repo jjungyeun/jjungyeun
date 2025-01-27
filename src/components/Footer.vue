@@ -2,7 +2,7 @@
     <div class="contents">
         <div class="footer">
             <div class="message">저희의 새로운 시작을 축하해 주셔서 감사드립니다.</div>
-            <div class="credit">새신부 정연이의 손길로 만들어진 페이지입니다😄</div>
+            <div class="credit">새신부 정연이의 손길로 만들어진 페이지입니다😄<span> (with GPT)</span></div>
             <div class="instagram-container">
                 <span>Follow Us on Instagram</span>
                 <a :href="groomInstagram" target="_blank" class="instagram-link">
@@ -54,6 +54,10 @@ export default {
     margin-top: 30px;
     font-size: 16px;
     color: var(--text-color-lightlight-gray);
+    white-space: nowrap;
+    span {
+        color: var(--text-color-point-navy);
+    }
 }
 /* 인스타그램 컨테이너 */
 .instagram-container {
