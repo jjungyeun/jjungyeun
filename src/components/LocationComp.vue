@@ -53,16 +53,32 @@
             </div>
         </div>
         </div>
+        <Toast v-if="showToast" :message="toastMessage" position="top" />
     </div>
   </template>
   
   <script>
+import Toast from "@/components/ToastComp.vue";
+
   export default {
     name: "LocationComponent",
+    components: { Toast },
+    data() {
+      return {
+        showToast: false,
+        toastMessage: "",
+      }
+    },
     methods: {
       copyToClipboard(text) {
         navigator.clipboard.writeText(text).then(() => {
-          alert("주소가 복사되었습니다😊");
+          this.toastMessage = "주소가 복사되었습니다😊";
+          this.showToast = true;
+
+          // 토스트가 사라진 후 상태 초기화
+          setTimeout(() => {
+            this.showToast = false;
+          }, 2000);
         });
       },
       loadNaverMapScript() {

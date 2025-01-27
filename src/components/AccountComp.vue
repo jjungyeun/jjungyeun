@@ -34,14 +34,21 @@
             </div>
         </div>
         </div>
+        <Toast v-if="showToast" :message="toastMessage" position="top" />
     </div>
     
 </template>
   
 <script>
+import Toast from "@/components/ToastComp.vue";
+
   export default {
+    name: "AccountComponent",
+    components: { Toast },
     data() {
       return {
+        showToast: false,
+        toastMessage: "",
         // 현재 확장된 그룹
         expandedGroups: [],
         accountGroups: {
@@ -96,7 +103,13 @@
     },
       copyToClipboard(account) {
         navigator.clipboard.writeText(account).then(() => {
-          alert("계좌번호가 복사되었습니다!");
+          this.toastMessage = "계좌번호가 복사되었습니다😊";
+          this.showToast = true;
+
+          // 토스트가 사라진 후 상태 초기화
+          setTimeout(() => {
+            this.showToast = false;
+          }, 2000);
         });
       },
     },
