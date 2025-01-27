@@ -6,7 +6,7 @@
     <CalendarComp :guest_status="guest_status" />
     <GalleryComp />
     <AccountComp v-if="account_status" />
-
+    <Footer />
   </main>
 </template>
 
@@ -17,6 +17,7 @@ import ContactComp from "@/components/ContactComp.vue";
 import CalendarComp from "@/components/CalendarComp.vue";
 import GalleryComp from "@/components/GalleryComp.vue";
 import AccountComp from "@/components/AccountComp.vue";
+import Footer from "@/components/Footer.vue"
 
 import { GuestType, GuestStatus } from '@/constants';
 
@@ -29,6 +30,7 @@ export default {
     CalendarComp,
     GalleryComp,
     AccountComp,
+    Footer,
   },
   data() {
     return {

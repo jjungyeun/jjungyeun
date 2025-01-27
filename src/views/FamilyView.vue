@@ -7,6 +7,7 @@
     <GalleryComp />
     <LocationComp v-if="guest_status==GuestStatus.JY_DAD || guest_status==GuestStatus.YJ_MOM" />
     <AccountComp />
+    <Footer />
   </main>
 </template>
 
@@ -18,6 +19,7 @@ import CalendarComp from "@/components/CalendarComp.vue";
 import GalleryComp from "@/components/GalleryComp.vue";
 import LocationComp from "@/components/LocationComp.vue";
 import AccountComp from "@/components/AccountComp.vue";
+import Footer from "@/components/Footer.vue"
 
 import { GuestType, GuestStatus } from '@/constants';
 
@@ -31,6 +33,7 @@ export default {
     GalleryComp,
     LocationComp,
     AccountComp,
+    Footer,
   },
   data() {
     return {

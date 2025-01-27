@@ -52,7 +52,7 @@ html, body {
   height: 100vh;
   width: 100vw;
   margin: 0;
-  background-color: var(--primary-color-purple);
+  background-color: var(--background-yellow);
   overflow: hidden;
   font-family: 'NanumSquareRoundR', sans-serif;
 }
@@ -81,6 +81,9 @@ html, body {
 
 /* 반응형 스타일 */
 @media (min-width: 480px) { /* 가로 480px 이상 (PC 또는 태블릿) */
+  html, body {
+    background-color: var(--primary-color-purple);
+  }
   .mobile-view {
     width: 480px; /* PC에서는 가로 크기 고정 */
     height: calc(100vh - 30px); /* PC에서는 세로를 화면 높이에 맞추기 */
