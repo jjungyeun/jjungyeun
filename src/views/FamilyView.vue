@@ -8,6 +8,7 @@
     <LocationComp v-if="guest_status==GuestStatus.JY_DAD || guest_status==GuestStatus.YJ_MOM" />
     <AccountComp />
     <Footer />
+    <FloatingButtons />
   </main>
 </template>
 
@@ -20,6 +21,7 @@ import GalleryComp from "@/components/GalleryComp.vue";
 import LocationComp from "@/components/LocationComp.vue";
 import AccountComp from "@/components/AccountComp.vue";
 import Footer from "@/components/Footer.vue"
+import FloatingButtons from "@/components/FloatingButtons.vue"
 
 import { GuestType, GuestStatus } from '@/constants';
 
@@ -34,6 +36,7 @@ export default {
     LocationComp,
     AccountComp,
     Footer,
+    FloatingButtons,
   },
   data() {
     return {

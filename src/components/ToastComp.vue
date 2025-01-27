@@ -44,7 +44,7 @@ mounted() {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(160, 88, 199, 0.9);
+    background-color: rgba(33, 46, 59, 0.8);
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
