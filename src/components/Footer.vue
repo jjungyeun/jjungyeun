@@ -33,7 +33,7 @@ export default {
 
 <style scoped>
 .contents {
-    padding: 30px 0;
+    padding: 30px 0 100px;
     background-color: var(--text-color-point-navy);
 }
 .footer {
