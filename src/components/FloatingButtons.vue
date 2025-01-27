@@ -40,23 +40,53 @@
   <script>
 import Toast from "@/components/ToastComp.vue";
 
-  export default {
+import { GuestStatus } from '@/constants';
+import { format } from "date-fns";
+import { ko } from "date-fns/locale";
+
+export default {
     name: "FloatingButtons",
     components: { Toast },
+    props: {
+      guest_status: {
+        type: Object,
+        required: false,
+        default: GuestStatus.DEFAULT,
+      }
+    },
     data() {
       return {
         showToast: false,
         toastMessage: "",
         isDesktop: window.innerWidth >= 480, // 초기 화면 크기에 따라 설정
         showButtons: false, // 링크 복사 버튼 표시 여부
+        kakaoApiKey: import.meta.env.VITE_KAKAO_API_KEY,
       };
     },
     methods: {
       toggleButtons() {
         this.showButtons = !this.showButtons; // 버튼 표시 상태 토글
       },
+      getShareMessage() {
+        var message = `🗓️ ${this.formattedWeddingDate}`;
+
+        if (this.guest_status == GuestStatus.JY_DAD || this.guest_status == GuestStatus.YJ_MOM) {
+          message += `\n🚩 파티앤프렌즈 파블로홀`;
+        }
+
+        return message;
+      },
       shareToKakao() {
-        alert("카카오톡 공유 버튼이 클릭되었습니다!"); // 카카오톡 공유 로직 추가
+        const url = new URL(window.location.href);
+        const fullPath = url.hash;
+
+        Kakao.Share.sendCustom({
+          templateId: 116773,
+          templateArgs: {
+            "DESCRIPTION": this.getShareMessage(),
+            "PATH": fullPath,
+          }
+        });
       },
       copyLink() {
         const currentUrl = window.location.href; // 현재 페이지의 전체 URL 가져오기
@@ -64,7 +94,7 @@ import Toast from "@/components/ToastComp.vue";
           this.toastMessage = "청첩장 링크가 복사되었습니다😊";
           this.showToast = true;
         }).catch(err => {
-          this.toastMessage = "청첩장 링크에 실패했습니다😭";
+          this.toastMessage = "청첩장 링크 복사에 실패했습니다😭";
           this.showToast = true;
         }).finally(() => {
           // 토스트가 사라진 후 상태 초기화
@@ -79,6 +109,25 @@ import Toast from "@/components/ToastComp.vue";
     },
     mounted() {
       window.addEventListener("resize", this.updateLayout);
+      Kakao.init(this.kakaoApiKey);
+    },
+    computed: {
+      weddingDate() {
+          return this.guest_status.date;
+      },
+      formattedWeddingDate() {
+          // 시간 확인: 오전 12시 정각이면 시간 아예 생략
+          // 분 값 확인: 0이면 분 생략, 그렇지 않으면 분 포함
+          const hours = this.weddingDate.getHours();
+          const minutes = this.weddingDate.getMinutes();
+
+          // 오전 12시 정각 처리
+          if (hours === 0 && minutes === 0) {
+            return format(this.weddingDate, "yyyy.M.d(EEE)", { locale: ko });
+          } else {
+            return format(this.weddingDate, "yyyy.M.d(EEE) HH:mm", { locale: ko });
+          }
+      }
     },
     beforeDestroy() {
       window.removeEventListener("resize", this.updateLayout);

@@ -8,7 +8,7 @@
     <LocationComp v-if="guest_status==GuestStatus.JY_DAD || guest_status==GuestStatus.YJ_MOM" />
     <AccountComp />
     <Footer />
-    <FloatingButtons />
+    <FloatingButtons :guest_status="guest_status" />
   </main>
 </template>
 

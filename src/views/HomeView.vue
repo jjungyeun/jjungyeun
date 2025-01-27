@@ -7,7 +7,7 @@
     <GalleryComp />
     <AccountComp v-if="account_status" />
     <Footer />
-    <FloatingButtons />
+    <FloatingButtons :guest_status="guest_status" />
   </main>
 </template>
 
