@@ -123,7 +123,7 @@ import Toast from "@/components/ToastComp.vue";
       const infoWindow = new naver.maps.InfoWindow({
         content: `
           <div style="padding:7px; font-size:15px; font-weight:bold; ">
-            <a href="https://map.naver.com/p/directions/-/14139546.5428928,4518431.3936094,%ED%8C%8C%ED%8B%B0%EC%95%A4%ED%94%84%EB%A0%8C%EC%A6%88,1158074577,PLACE_POI/-/transit?c=15.00,0,0,0,dh" target="_blank" style="text-decoration:none;">
+            <a href="https://map.naver.com/p/directions/-/14139546.5428928,4518431.3936094,%ED%8C%8C%ED%8B%B0%EC%95%A4%ED%94%84%EB%A0%8C%EC%A6%88,1158074577,PLACE_POI/-/transit?c=15.00,0,0,0,dh" target="_blank" style="text-decoration:none;white-space: nowrap;">
               파티앤프렌즈
             </a>
           </div>
