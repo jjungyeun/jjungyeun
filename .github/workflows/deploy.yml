@@ -67,4 +67,4 @@ jobs:
 
       # 6. Pages 배포 트리거
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
