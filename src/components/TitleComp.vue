@@ -1,21 +1,21 @@
 <template>
     <div class="contents">
-        <!-- 상단 제목 -->
-        <div class="title">우리 결혼합니다</div>
+      <!-- 상단 제목 -->
+      <div class="title">우리 결혼합니다</div>
 
-        <!-- 사진 영역 -->
-        <div class="photo-frame">
-          <canvas id="flowerCanvas" class="flower-canvas"></canvas>
-          <img src="@/assets/images/title.png" alt="Wedding Main Photo" class="photo" />
-        </div>
+      <!-- 사진 영역 -->
+      <div class="photo-frame">
+        <canvas id="flowerCanvas" class="flower-canvas"></canvas>
+        <img src="@/assets/images/title.png" alt="Wedding Main Photo" class="photo" />
+      </div>
 
-        <!-- 하단 텍스트 -->
-        <div class="details">
-            <div class="couple-name">신랑 김영진 ♥ 신부 원정연</div>
-            <div class="date-time">
-                {{ formattedWeddingDate }}
-            </div>
-        </div>
+      <!-- 하단 텍스트 -->
+      <div class="details">
+          <div class="couple-name">신랑 김영진 ♥ 신부 원정연</div>
+          <div class="date-time">
+              {{ formattedWeddingDate }}
+          </div>
+      </div>
     </div>
 </template>
 
@@ -69,9 +69,22 @@ export default {
     const canvas = document.getElementById("flowerCanvas");
     const ctx = canvas.getContext("2d");
 
+    function resizeCanvas() {
+      const parent = canvas.parentElement; // 부모 컨테이너 가져오기
+      if (!parent) {
+        console.error("Canvas의 부모 요소를 찾을 수 없습니다.");
+        return;
+      }
+
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = parent.offsetWidth * dpr;
+      canvas.height = parent.offsetHeight * dpr;
+      ctx.scale(dpr, dpr);
+    }
+
     // 캔버스 크기 설정
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
 
     const particles = [];
     const particleCount = 20;
@@ -83,7 +96,7 @@ export default {
 
     // 파티클 클래스
     class Particle {
-      constructor() {
+      constructor(images) {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.size = Math.random() * 3 + 7;
@@ -124,14 +137,28 @@ export default {
     }
 
     // 모든 이미지가 로드된 후 파티클 초기화
-    Promise.all(images.map((img) => new Promise((resolve) => (img.onload = resolve)))).then(() => {
-      initParticles(images); // 이미지 배열 전달
+    Promise.all(
+      images.map(
+        (img) =>
+          new Promise((resolve, reject) => {
+            img.onload = resolve;
+            img.onerror = () => {
+              console.error("이미지 로드 실패:", img.src);
+              reject(new Error(`이미지 로드 실패: ${img.src}`));
+            };
+          })
+      )
+    ).then(() => {
+      initParticles();
       animate();
+    })
+    .catch((error) => {
+      console.error("꽃잎 초기화 실패:", error);
     });
 
     function initParticles() {
       for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
+        particles.push(new Particle(images));
       }
     }
 
@@ -143,19 +170,13 @@ export default {
       });
       requestAnimationFrame(animate);
     }
-
-    // 반응형 처리
-    window.addEventListener("resize", () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    });
   },
 };
 </script>
 
 <style scoped>
 .contents {
-  margin-top: 100px;
+  padding-top: 100px;
 }
 
 /* 제목 스타일 */ 
@@ -175,6 +196,7 @@ export default {
     justify-content: center; /* 가로 중앙 */
     width: 80%; /* 사진 프레임 너비 */
     max-width: 350px; /* 최대 너비 제한 */
+    aspect-ratio: 3 / 4;
     overflow: hidden;
     margin-top: 50px;
 }
