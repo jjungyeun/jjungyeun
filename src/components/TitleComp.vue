@@ -75,11 +75,9 @@ export default {
         console.error("Canvas의 부모 요소를 찾을 수 없습니다.");
         return;
       }
-
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = parent.offsetWidth * dpr;
-      canvas.height = parent.offsetHeight * dpr;
-      ctx.scale(dpr, dpr);
+      
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
     }
 
     // 캔버스 크기 설정
