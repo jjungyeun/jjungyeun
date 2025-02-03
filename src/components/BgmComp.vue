@@ -6,22 +6,30 @@
         <img :src="isPlaying ? pauseImg : playImg" alt="음악 컨트롤 버튼" />
     </div>
     <!-- 오디오 요소 -->
-    <audio ref="bgm" :src="bgmSrc" loop autoplay></audio>
+    <audio ref="bgm" :src="bgmSrc" loop autoplay muted></audio>
+
+    <Toast v-if="showToast" :message="toastMessage" position="top" />
 </div>
 </template>
 
 <script>
+import Toast from "@/components/ToastComp.vue";
+
 import bgmSrc from "@/assets/audio/bgm-iu.mp3";
 import playImg from "@/assets/images/play.png";
 import pauseImg from "@/assets/images/pause.png";
 
 export default {
+    name: "BgmComponent",
+    components: { Toast },
     data() {
         return {
             isPlaying: false, // 음악 재생 상태
             bgmSrc, // 오디오 경로
             playImg, // 재생 이미지 경로
             pauseImg, // 일시정지 이미지 경로
+            showToast: false,
+            toastMessage: "",
         };
     },
     methods: {
@@ -37,6 +45,7 @@ export default {
         initBgm() {
             // 첫 상호작용 시 자동 재생
             const bgm = this.$refs.bgm;
+            bgm.muted = false; // 음소거 해제
             bgm.play()
                 .then(() => {
                     this.isPlaying = true; // 성공적으로 재생된 경우 상태 업데이트
@@ -48,13 +57,26 @@ export default {
             // 이벤트 리스너 제거 (한 번만 실행)
             window.removeEventListener("click", this.initBgm);
             window.removeEventListener("touchstart", this.initBgm);
+            window.removeEventListener("pointerdown", this.initBgm);
+        },
+        showInitialToast() {
+            this.toastMessage = "🎵 배경음악이 준비되어 있습니다 🎶";
+            this.showToast = true;
+            
+            setTimeout(() => {
+                this.showToast = false;
+            }, 2000);
         },
     },
     mounted() {
+        // BGM 토스트
+        this.showInitialToast();
+
         // 볼륨 설정 (50%)
         this.$refs.bgm.volume = 0.5;
         window.addEventListener("click", this.initBgm, { once: true }); // 한 번만 실행
         window.addEventListener("touchstart", this.initBgm, { once: true }); // 모바일 대응
+        window.addEventListener("pointerdown", this.initBgm, { once: true });
     },
 };
 </script>
