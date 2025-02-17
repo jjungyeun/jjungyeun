@@ -2,6 +2,7 @@
   <main>
     <TitleComp :guest_type="guest_type" :guest_status="guest_status" />
     <LetterComp :guest_type="guest_type" />
+    <IntervalPhoto />
     <ContactComp />
     <CalendarComp :guest_status="guest_status" />
     <GalleryComp />
@@ -22,6 +23,7 @@ import AccountComp from "@/components/AccountComp.vue";
 import Footer from "@/components/Footer.vue"
 import FloatingButtons from "@/components/FloatingButtons.vue"
 import BgmComp from "@/components/BgmComp.vue";
+import IntervalPhoto from "@/components/IntervalPhoto.vue"
 
 import { GuestType, GuestStatus } from '@/constants';
 
@@ -37,6 +39,7 @@ export default {
     Footer,
     FloatingButtons,
     BgmComp,
+    IntervalPhoto,
   },
   data() {
     return {

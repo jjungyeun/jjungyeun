@@ -50,11 +50,23 @@ import photoThumb1 from "@/assets/images/gallery/photo1_thumb.jpg";
 import photoThumb2 from "@/assets/images/gallery/photo2_thumb.jpg";
 import photoThumb3 from "@/assets/images/gallery/photo3_thumb.jpg";
 import photoThumb4 from "@/assets/images/gallery/photo4_thumb.jpg";
+import photoThumb5 from "@/assets/images/gallery/photo5_thumb.jpg";
+import photoThumb6 from "@/assets/images/gallery/photo6_thumb.jpg";
+import photoThumb7 from "@/assets/images/gallery/photo7_thumb.jpg";
+import photoThumb8 from "@/assets/images/gallery/photo8_thumb.jpg";
+import photoThumb9 from "@/assets/images/gallery/photo9_thumb.jpg";
+import photoThumb10 from "@/assets/images/gallery/photo10_thumb.jpg";
 
 import photo1 from "@/assets/images/gallery/photo1.jpg";
 import photo2 from "@/assets/images/gallery/photo2.jpg";
 import photo3 from "@/assets/images/gallery/photo3.jpg";
 import photo4 from "@/assets/images/gallery/photo4.jpg";
+import photo5 from "@/assets/images/gallery/photo5.jpg";
+import photo6 from "@/assets/images/gallery/photo6.jpg";
+import photo7 from "@/assets/images/gallery/photo7.jpg";
+import photo8 from "@/assets/images/gallery/photo8.jpg";
+import photo9 from "@/assets/images/gallery/photo9.jpg";
+import photo10 from "@/assets/images/gallery/photo10.jpg";
 
 export default {
     components: { GalleryModal },
@@ -63,10 +75,12 @@ export default {
         isModalOpen: false,
         currentIndex: 0, // 현재 선택된 썸네일 인덱스
         thumbnails: [
-            photoThumb1, photoThumb2, photoThumb3, photoThumb4,
+            photoThumb1, photoThumb2, photoThumb3, photoThumb4, photoThumb5,
+            photoThumb6, photoThumb7, photoThumb8, photoThumb9, photoThumb10,
         ],
         images: [
-            photo1, photo2, photo3, photo4,
+            photo1, photo2, photo3, photo4, photo5,
+            photo6, photo7, photo8, photo9, photo10,
         ],
         isDragging: false, // 드래그 중 여부
         dragStartX: 0, // 드래그 시작 X 좌표

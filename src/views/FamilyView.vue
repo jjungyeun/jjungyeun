@@ -2,11 +2,13 @@
   <main>
     <TitleComp :guest_type="guest_type" :guest_status="guest_status" />
     <LetterComp :guest_type="guest_type" />
+    <IntervalPhoto />
     <ContactComp />
     <CalendarComp :guest_status="guest_status" />
     <GalleryComp />
     <LocationComp v-if="guest_status==GuestStatus.JY_DAD || guest_status==GuestStatus.YJ_MOM" />
     <AccountComp />
+    <LastPhoto />
     <Footer />
     <FloatingButtons :guest_status="guest_status" />
     <BgmComp />
@@ -24,6 +26,8 @@ import AccountComp from "@/components/AccountComp.vue";
 import Footer from "@/components/Footer.vue"
 import FloatingButtons from "@/components/FloatingButtons.vue"
 import BgmComp from "@/components/BgmComp.vue";
+import IntervalPhoto from "@/components/IntervalPhoto.vue"
+import LastPhoto from "@/components/LastPhoto.vue"
 
 import { GuestType, GuestStatus } from '@/constants';
 
@@ -40,6 +44,8 @@ export default {
     Footer,
     FloatingButtons,
     BgmComp,
+    IntervalPhoto,
+    LastPhoto,
   },
   data() {
     return {
