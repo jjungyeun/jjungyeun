@@ -7,6 +7,7 @@
     <CalendarComp :guest_status="guest_status" />
     <GalleryComp />
     <AccountComp v-if="account_status" />
+    <LastPhoto />
     <Footer />
     <FloatingButtons :guest_status="guest_status" />
     <BgmComp />
@@ -24,6 +25,7 @@ import Footer from "@/components/Footer.vue"
 import FloatingButtons from "@/components/FloatingButtons.vue"
 import BgmComp from "@/components/BgmComp.vue";
 import IntervalPhoto from "@/components/IntervalPhoto.vue"
+import LastPhoto from "@/components/LastPhoto.vue"
 
 import { GuestType, GuestStatus } from '@/constants';
 
@@ -40,6 +42,7 @@ export default {
     FloatingButtons,
     BgmComp,
     IntervalPhoto,
+    LastPhoto,
   },
   data() {
     return {
