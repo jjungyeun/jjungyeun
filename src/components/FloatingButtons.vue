@@ -72,6 +72,8 @@ export default {
 
         if (this.guest_status == GuestStatus.JY_DAD || this.guest_status == GuestStatus.YJ_MOM) {
           message += `\n🚩 파티앤프렌즈 파블로홀`;
+        } else if (this.guest_status == GuestStatus.JY_MOM) {
+          message += `\n🚩 바오로차이나`;
         }
 
         return message;
