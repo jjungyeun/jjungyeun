@@ -32,18 +32,18 @@
         <!-- 교통 정보 -->
         <div class="transport">
             <div class="section">
-            <div class="section-title">자차</div>
-            <div>내비게이션: '바오로차이나' 검색<br />서울 서초구 방배천로 12-9, 2층</div>
+              <div class="section-title">자차</div>
+              <div>내비게이션: '바오로차이나' 검색<br />서울 서초구 방배천로 12-9, 2층</div>
             </div>
             <hr class="divider" />
             <div class="section">
-            <div class="section-title">지하철</div>
-            <div>사당역 (2호선, 4호선)<br />사당역 12, 13번 출구 도보 2분 거리</div>
+              <div class="section-title">지하철</div>
+              <div>사당역 (2호선, 4호선)<br />사당역 12, 13번 출구 도보 2분 거리</div>
             </div>
             <hr class="divider" />
             <div class="section">
-            <div class="section-title">주차</div>
-            <div>식당 건물 주차장 이용<br />공간 부족 시 '사당역 공영주차장' 검색 후 인근 공영주차장 이용</div>
+              <div class="section-title">주차</div>
+              <div>식당 건물 주차장 이용<br />공간 부족 시 '사당역 공영주차장' 검색 후<br />인근 공영주차장 이용</div>
             </div>
         </div>
         </div>
@@ -55,7 +55,7 @@
 import Toast from "@/components/ToastComp.vue";
 
   export default {
-    name: "LocationComponent",
+    name: "LocationComponent2",
     components: { Toast },
     data() {
       return {

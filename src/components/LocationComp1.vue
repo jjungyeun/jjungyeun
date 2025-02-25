@@ -61,7 +61,7 @@
 import Toast from "@/components/ToastComp.vue";
 
   export default {
-    name: "LocationComponent",
+    name: "LocationComponent1",
     components: { Toast },
     data() {
       return {
