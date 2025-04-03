@@ -74,6 +74,8 @@ export default {
           message += `\n🚩 파티앤프렌즈 파블로홀`;
         } else if (this.guest_status == GuestStatus.JY_MOM) {
           message += `\n🚩 바오로차이나`;
+        } else if (this.guest_status == GuestStatus.YJ_DAD) {
+          message += `\n🚩 남악동경일식`;
         }
 
         return message;
