@@ -4,7 +4,7 @@ export const GuestType = {
 export const GuestStatus = {
     // Month는 0부터 시작하므로 1 빼줘야 함
     YJ_DAD: {
-        date: new Date(2025, 4-1, 19, 13, 0, 0)
+        date: new Date(2025, 4-1, 19, 12, 0, 0)
     },
     YJ_MOM: {
         date: new Date(2025, 3-1, 22, 18, 30, 0)
