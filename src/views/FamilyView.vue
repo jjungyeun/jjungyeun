@@ -8,6 +8,7 @@
     <GalleryComp />
     <LocationComp1 v-if="guest_status==GuestStatus.JY_DAD || guest_status==GuestStatus.YJ_MOM" />
     <LocationComp2 v-if="guest_status==GuestStatus.JY_MOM" />
+    <LocationComp3 v-if="guest_status==GuestStatus.YJ_DAD" />
     <AccountComp />
     <LastPhoto />
     <Footer />
@@ -24,6 +25,7 @@ import CalendarComp from "@/components/CalendarComp.vue";
 import GalleryComp from "@/components/GalleryComp.vue";
 import LocationComp1 from "@/components/LocationComp1.vue";
 import LocationComp2 from "@/components/LocationComp2.vue";
+import LocationComp3 from "@/components/LocationComp3.vue";
 import AccountComp from "@/components/AccountComp.vue";
 import Footer from "@/components/Footer.vue"
 import FloatingButtons from "@/components/FloatingButtons.vue"
@@ -43,6 +45,7 @@ export default {
     GalleryComp,
     LocationComp1,
     LocationComp2,
+    LocationComp3,
     AccountComp,
     Footer,
     FloatingButtons,
